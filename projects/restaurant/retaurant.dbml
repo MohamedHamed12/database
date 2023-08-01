@@ -1,0 +1,103 @@
+
+// https://dbdiagram.io/d/64b36d6a02bd1c4a5e23cb56
+
+Table CustomUser {
+  id integer
+  name  str
+  email email [primary key]
+  password password
+  email_confirmed bool
+  profile_completed bool
+  created_at timestamp 
+}
+
+Table Userprofile {
+  user_id integer [primary key]
+  bio  text
+  img image
+  phone_number str
+  created_at timestamp 
+}
+
+Table Customer{
+  userprofile_id integer [primary key]
+  total_order integer
+  total_spent integer
+}
+Ref:Customer.userprofile_id - Userprofile.user_id
+Ref: Userprofile.user_id - CustomUser.id // one-to-one
+
+Table employee{
+  userprofile_id integer [primary key]
+  salary integer
+}
+
+Ref:employee.userprofile_id - Userprofile.user_id
+
+Table Restaurant {
+  id integer  [primary key] 
+  name  str
+  location str
+  house integer
+  road str
+  city str
+  delivery_time str
+  min_order integer
+  rate integer
+  img image
+  created_at timestamp 
+}
+Ref:  Restaurant.id <> Campaign.restaurant_id 
+
+Table category{
+  id integer  [primary key]
+  name  str
+}
+Table product {
+  id integer  [primary key]
+  price integer
+  description text
+  available_quantity  integer
+  category_id integer
+  discount_id integer
+  restaurant_id integer
+  created_at timestamp 
+  updated_at timestamp
+
+}
+Table product_images{
+  img image
+  product_id integer [primary key]
+}
+
+Ref:  product.id < product_images.product_id 
+Ref:  Restaurant.id < product.restaurant_id 
+Ref:  category.id < product.category_id 
+
+Table Campaign {
+  restaurant_id  integer
+  name str
+  img image
+  created_at timestamp 
+}
+
+Table order_item{
+  order_id integer
+  product_id integer
+  quantity  integer
+}
+
+Table order {
+  id integer
+  user_id  integer
+  user_location str
+  delivery_option Choices
+  restaurant_id integer
+  created_at timestamp 
+}
+
+Ref: order_item.order_id > order.id
+Ref: order.restaurant_id > Restaurant.id
+Ref: order.user_id > CustomUser.id
+
+
