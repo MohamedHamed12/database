@@ -1,4 +1,4 @@
--- database: /run/media/mohamed/New Volume/Documents/programing/dp/anther/test.db
+-- database: /run/media/mohamed/New Volume/Documents/programing/database/test.db
 -- Create the Employee table
 CREATE TABLE
     Employee (employee_id INT PRIMARY KEY, team_id INT);
