@@ -1,4 +1,4 @@
--- database: /run/media/mohamed/New Volume/Documents/programing/database/test.db
+-- database:/home/mohamed/documents/programming/database/test.db
 DROP TABLE Employee;
 
 CREATE TABLE IF NOT EXISTS
@@ -43,7 +43,7 @@ WHERE
         WHERE
             e2.departmentId = e.departmentId
     );
-
+SELECT * From Employee;
 -- Employee table:
 -- +----+-------+--------+--------------+
 -- | id | name  | salary | departmentId |
